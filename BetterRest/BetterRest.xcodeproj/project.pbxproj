@@ -11,6 +11,8 @@
 		35A3405B2B497F40007FFCE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A3405A2B497F40007FFCE3 /* ContentView.swift */; };
 		35A3405D2B497F41007FFCE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35A3405C2B497F41007FFCE3 /* Assets.xcassets */; };
 		35A340602B497F41007FFCE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35A3405F2B497F41007FFCE3 /* Preview Assets.xcassets */; };
+		35A340672B4AD494007FFCE3 /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A340662B4AD494007FFCE3 /* ContentView2.swift */; };
+		35A340692B4AD76A007FFCE3 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 35A340682B4AD76A007FFCE3 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		35A3405A2B497F40007FFCE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		35A3405C2B497F41007FFCE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35A3405F2B497F41007FFCE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		35A340662B4AD494007FFCE3 /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
+		35A340682B4AD76A007FFCE3 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				35A340582B497F40007FFCE3 /* BetterRestApp.swift */,
 				35A3405A2B497F40007FFCE3 /* ContentView.swift */,
+				35A340662B4AD494007FFCE3 /* ContentView2.swift */,
+				35A340682B4AD76A007FFCE3 /* SleepCalculator.mlmodel */,
 				35A3405C2B497F41007FFCE3 /* Assets.xcassets */,
 				35A3405E2B497F41007FFCE3 /* Preview Content */,
 			);
@@ -137,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35A340672B4AD494007FFCE3 /* ContentView2.swift in Sources */,
+				35A340692B4AD76A007FFCE3 /* SleepCalculator.mlmodel in Sources */,
 				35A3405B2B497F40007FFCE3 /* ContentView.swift in Sources */,
 				35A340592B497F40007FFCE3 /* BetterRestApp.swift in Sources */,
 			);
