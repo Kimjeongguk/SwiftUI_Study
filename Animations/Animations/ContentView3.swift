@@ -12,11 +12,11 @@ struct ContentView3: View {
     
     var body: some View {
         Button("Tap Me") {
-            withAnimation(.spring(duration: 10, bounce: 0.5)) {
+            withAnimation(.spring(duration: 1, bounce: 0)) {
                 animationAmount += 360
             }
         }
-        .padding(50)
+        .padding(100)
         .background(.red)
         .foregroundStyle(.white)
         .clipShape(.circle)

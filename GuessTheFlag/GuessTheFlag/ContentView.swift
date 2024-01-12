@@ -19,16 +19,24 @@ struct MainTitle: ViewModifier {
 
 struct SpecificImage: ViewModifier {
     var name: String
+    var amount: Double
+    var isTap: Bool = false
     func body(content: Content) -> some View {
+        var theRest = isTap && amount != 360
         Image(name)
             .clipShape(.capsule)
             .shadow(radius: 5)
+            .blur(radius: theRest ? 3.0 : 0)
+            .scaleEffect(theRest ? 0.6 : 1)
+            .rotation3DEffect(
+                .degrees(amount == 360 ? 360 : 0), axis: (x: 0.0, y: 1.0, z: 0.0)
+            )
     }
 }
 
 extension View {
-    func flagImage(name: String) -> some View {
-        modifier(SpecificImage(name: name))
+    func flagImage(name: String, amount: Double, isTap: Bool) -> some View {
+        modifier(SpecificImage(name: name, amount: amount, isTap: isTap))
     }
     
     func mainTitle(title: String) -> some View {
@@ -45,6 +53,8 @@ struct ContentView: View {
     @State private var selectFlag = 0
     @State private var round = 0
     @State private var endGame = false
+    @State private var amountAnimations = [0.0, 0.0, 0.0]
+    @State private var showAnimation = false
     
     var body: some View {
         ZStack {
@@ -71,11 +81,15 @@ struct ContentView: View {
                     }
                     
                     ForEach(0..<3) { number in
-                        Button {
-                            flagTapped(number)
+                        Button() {
+                            withAnimation() {
+                                amountAnimations[number] += 360
+                                flagTapped(number)
+                                showAnimation = true
+                            }
                         } label: {
                             Image(countries[number])
-                            flagImage(name: countries[number])
+                            flagImage(name: countries[number], amount: amountAnimations[number], isTap: showAnimation)
                         }
                     }
                 }
@@ -120,13 +134,14 @@ struct ContentView: View {
         } else {
             scoreTitle = "Wrong"
         }
-        
         showingScore = true
     }
     
     func mixFlag() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        amountAnimations = [0.0, 0.0, 0.0]
+        showAnimation = false
     }
     
     func askQuestion() {

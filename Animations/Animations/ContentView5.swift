@@ -34,7 +34,7 @@ struct ContentView5: View {
                     .font(.title)
                     .background(enabled ? .blue: .red)
                     .offset(dragAmount)
-                    .animation(.linear.delay(Double(num) / 20), value: dragAmount)
+                    .animation(.linear.delay(Double(num) / 5), value: dragAmount)
             }
         }
         .gesture(
