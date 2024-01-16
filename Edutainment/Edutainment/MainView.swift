@@ -31,7 +31,7 @@ struct MainView: View {
             VStack {
                 Spacer()
                 
-                Text("dd")
+                Text("Multiplication Table")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundStyle(.red)
