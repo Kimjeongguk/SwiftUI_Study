@@ -10,42 +10,48 @@ import SwiftUI
 struct QuestionView: View {
     var level: Int
     var question: Int
+    @State private var userAnswer = 0
     @State private var answer = 0
+    @State private var score = 0
     @State private var array: [Int] = []
     @State private var isNext = false
+    @State private var isTotalScore = false
+    @State private var resultMessage = "틀렸습니다."
     
     var number: Int {
-        var temp = array.first ?? 0
-        arrayRemoveFirst()
+        let temp = array.first ?? 0
         return temp
     }
     
     var body: some View {
         VStack {
             Form {
-                
                 Section {
                     Text("\(level) * \(number) = ?")
                 }
                 
                 Section("정답") {
-                    TextField("Answer", value: $answer, format: .number)
+                    TextField("Answer", value: $userAnswer, format: .number)
+                        .keyboardType(.decimalPad)
                 }
             }
             Button("NEXT") {
-                tapNextButton()
-                isNext = true
+                correctCheck()
             }
             .playStyle()
         }
         .alert("Result", isPresented: $isNext) {
-            Text("OK")
+            Button("OK", action: tapNextButton)
         } message: {
-            Text("correct")
+            Text(resultMessage)
+        }
+        .alert("Total Score", isPresented: $isTotalScore) {
+            Button("처음으로", action: mainPage)
+        } message: {
+            Text("점수: \(score)")
         }
         .onAppear(){
             setArray()
-            
         }
     }
         
@@ -65,17 +71,29 @@ struct QuestionView: View {
         arrayRemoveFirst()
     }
     
-    func arrayRemoveFirst(){
-        if array.isEmpty {
-            
+    func correctCheck() {
+        answer = level * array[0]
+        if answer == userAnswer {
+            resultMessage = "정답입니다."
+            score += 100
         } else {
-            array.removeFirst()
+            resultMessage = "틀렸습니다."
         }
+        userAnswer = 0
+        isNext = true
     }
     
+    func arrayRemoveFirst(){
+        array.removeFirst()
+        isTotalScore = number == 0 ? true : false
+    }
+    
+    func mainPage() {
+        NavigationUtil.popToRootView()
+    }
     
 }
 
 #Preview {
-    QuestionView(level: 5, question: 5)
+    QuestionView(level: 2, question: 2)
 }

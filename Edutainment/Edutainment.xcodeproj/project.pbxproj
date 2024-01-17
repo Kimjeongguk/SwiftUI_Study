@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EAB16DD2B57A55600F85183 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB16DC2B57A55600F85183 /* NavigationUtil.swift */; };
 		0EDDBFEA2B54FAAA00186BF7 /* EdutainmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDBFE92B54FAAA00186BF7 /* EdutainmentApp.swift */; };
 		0EDDBFEC2B54FAAA00186BF7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDBFEB2B54FAAA00186BF7 /* MainView.swift */; };
 		0EDDBFEE2B54FAAC00186BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EDDBFED2B54FAAC00186BF7 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EAB16DC2B57A55600F85183 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		0EDDBFE62B54FAAA00186BF7 /* Edutainment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Edutainment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EDDBFE92B54FAAA00186BF7 /* EdutainmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdutainmentApp.swift; sourceTree = "<group>"; };
 		0EDDBFEB2B54FAAA00186BF7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				0EDDBFE92B54FAAA00186BF7 /* EdutainmentApp.swift */,
+				0EAB16DC2B57A55600F85183 /* NavigationUtil.swift */,
 				0EDDBFEB2B54FAAA00186BF7 /* MainView.swift */,
 				0EDDBFF72B54FCD300186BF7 /* LevelView.swift */,
 				0EDDBFF92B55159800186BF7 /* QuestionView.swift */,
@@ -145,6 +148,7 @@
 			files = (
 				0EDDBFFA2B55159800186BF7 /* QuestionView.swift in Sources */,
 				0EDDBFEC2B54FAAA00186BF7 /* MainView.swift in Sources */,
+				0EAB16DD2B57A55600F85183 /* NavigationUtil.swift in Sources */,
 				0EDDBFF82B54FCD300186BF7 /* LevelView.swift in Sources */,
 				0EDDBFEA2B54FAAA00186BF7 /* EdutainmentApp.swift in Sources */,
 			);
