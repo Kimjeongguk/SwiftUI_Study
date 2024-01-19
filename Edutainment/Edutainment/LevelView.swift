@@ -69,9 +69,6 @@ struct LevelView: View {
             .playStyle()
         }
     }
-    func getLevel(num: Int) {
-        level = num
-    }
 }
 
 #Preview {
