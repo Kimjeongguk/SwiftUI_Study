@@ -49,6 +49,14 @@ class Expenses {
         }
     }
     
+    var businessItems: [ExpenseItem] {
+        items.filter { $0.type == "Business" }
+    }
+    
+    var personalItems: [ExpenseItem] {
+        items.filter { $0.type == "Personal" }
+    }
+    
     init() {
         if let savedItems = UserDefaults.standard.data(forKey: "Items") {
             if let decodedItems = try? JSONDecoder().decode([ExpenseItem].self, from: savedItems) {
@@ -64,24 +72,41 @@ struct ContentView6: View {
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
     
+    func itemRows(name: String, type: String, amount: Double) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(name)
+                    .font(.headline)
+                
+                Text(type)
+            }
+            
+            Spacer()
+            
+            Text(amount, format: .currency(code: "USD"))
+                .amountStyle(amount: amount)
+        }
+    }
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            
-                            Text(item.type)
-                        }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: .currency(code: "USD"))
-                            .amountStyle(amount: item.amount)
+                Section("Business") {
+                    ForEach(expenses.businessItems) { item in
+                        itemRows(name: item.name, type: item.type, amount: item.amount)
                     }
+                    .onDelete(perform: removeBusinessItem)
+                }
+                
+                Section("Personal") {
+                    ForEach(expenses.personalItems) { item in
+                        itemRows(name: item.name, type: item.type, amount: item.amount)
+                    }
+                    .onDelete(perform: removePersonalItem)
+                }
+                
+                ForEach(expenses.items) { item in
+                    itemRows(name: item.name, type: item.type, amount: item.amount)
                 }
                 .onDelete(perform: removeItems)
             }
@@ -99,6 +124,18 @@ struct ContentView6: View {
     
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
+    }
+    
+    func removeBusinessItem(at offsets: IndexSet) {
+        offsets.forEach { index in
+            expenses.items = expenses.items.filter { $0.id != expenses.businessItems[index].id }
+        }
+    }
+    
+    func removePersonalItem(at offsets: IndexSet) {
+        offsets.forEach { index in
+            expenses.items = expenses.items.filter { $0.id != expenses.personalItems[index].id }
+        }
     }
 }
 
