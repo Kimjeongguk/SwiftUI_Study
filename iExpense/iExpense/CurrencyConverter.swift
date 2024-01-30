@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyConverter {
+struct CurrencyConverter: Hashable {
     let currencys = ["USD", "KRW", "JPY", "EUR"]
     let exchangeRates: [String: Double] = [
         "USD" : 1.0,

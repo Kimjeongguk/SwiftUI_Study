@@ -20,7 +20,7 @@ struct AddView: View {
     let types = ["Business", "Personal"]
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             Form {
                 TextField("Name", text: $name)
                 
@@ -43,14 +43,23 @@ struct AddView: View {
             }
             .navigationTitle("Add new expense")
             .toolbar {
-                Button("Save") {
-                    USDAmount = currencyConverter.convert(amount: amount, fromCurrency: currency, toCurrency: "USD") ?? 0.0
-                    let item = ExpenseItem(name: name, type: type, amount: USDAmount)
-                    expenses.items.append(item)
-                    dismiss()
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Cancel") {
+                       dismiss()
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Save") {
+                        USDAmount = currencyConverter.convert(amount: amount, fromCurrency: currency, toCurrency: "USD") ?? 0.0
+                        let item = ExpenseItem(name: name, type: type, amount: USDAmount)
+                        expenses.items.append(item)
+                        dismiss()
+                    }
                 }
             }
-        }
+            .navigationBarBackButtonHidden()
+            
+//        }
     }
 }
 

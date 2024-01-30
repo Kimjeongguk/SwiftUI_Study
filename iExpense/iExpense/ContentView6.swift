@@ -32,7 +32,7 @@ extension View {
     }
 }
 
-struct ExpenseItem: Identifiable, Codable{
+struct ExpenseItem: Identifiable, Codable, Hashable {
     var id = UUID()
     let name: String
     let type: String
@@ -40,7 +40,7 @@ struct ExpenseItem: Identifiable, Codable{
 }
 
 @Observable
-class Expenses {
+class Expenses: Hashable {
     var items = [ExpenseItem]() {
         didSet {
             if let encoded = try? JSONEncoder().encode(items) {
@@ -66,11 +66,22 @@ class Expenses {
         }
         items = []
     }
+    
+    static func == (lhs: Expenses, rhs: Expenses) -> Bool {
+        lhs.items == rhs.items
+    }
+    
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(items)
+        }
+    
 }
 
 struct ContentView6: View {
     @State private var expenses = Expenses()
     @State private var showingAddExpense = false
+    @State private var path = NavigationPath()
+    @State private var title = "iExpense"
     
     func itemRows(name: String, type: String, amount: Double) -> some View {
         HStack {
@@ -89,7 +100,7 @@ struct ContentView6: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 Section("Business") {
                     ForEach(expenses.businessItems) { item in
@@ -110,13 +121,25 @@ struct ContentView6: View {
                 }
                 .onDelete(perform: removeItems)
             }
-            .navigationTitle("iExpense")
+            .navigationTitle($title)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button("Add Expense", systemImage: "plus") {
-                    showingAddExpense = true
+                ToolbarItem(placement: .topBarLeading) {
+                    NavigationLink(value: expenses) {
+                        Text("Add")
+                    }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Add Expense", systemImage: "plus") {
+                        showingAddExpense = true
+                    }
+                }
+                
             }
             .sheet(isPresented: $showingAddExpense) {
+                AddView(expenses: expenses)
+            }
+            .navigationDestination(for: Expenses.self) { selection in
                 AddView(expenses: expenses)
             }
         }
