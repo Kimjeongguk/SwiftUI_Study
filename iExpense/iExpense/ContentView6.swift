@@ -72,8 +72,8 @@ class Expenses: Hashable {
     }
     
     func hash(into hasher: inout Hasher) {
-            hasher.combine(items)
-        }
+        hasher.combine(items)
+    }
     
 }
 
