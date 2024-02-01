@@ -7,31 +7,22 @@
 
 import SwiftUI
 
-@Observable
-class Activities: Hashable {
-    var items = [ActivitieItem]() {
-        didSet {
-            if let encoded = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encoded, forKey: "items")
-            }
-        }
-    }
-    
-    static func == (lhs: Activities, rhs: Activities) -> Bool {
-        lhs.items == rhs.items
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(items)
-    }
-}
-
 struct ContentView: View {
     @State private var activities = Activities()
+    
+    let columns = [
+        GridItem(.adaptive(minimum: 150))
+    ]
     var body: some View {
         NavigationStack {
             ScrollView {
-                
+                LazyVGrid(columns: columns) {
+                    ForEach(activities.items, id: \.self) { activitie in
+                        NavigationLink(value: activitie) {
+                            Text("aa")
+                        }
+                    }
+                }
             }
             .toolbar {
                 NavigationLink(value: activities) {
@@ -41,6 +32,9 @@ struct ContentView: View {
             .navigationTitle("Tracking_APP")
             .navigationDestination(for: Activities.self) { activities in
                 AddActivitieView(activitie: activities)
+            }
+            .navigationDestination(for: ActivitieItem.self) { item in
+                ActivitieView(activities: activities, activitie: item)
             }
         }
     }

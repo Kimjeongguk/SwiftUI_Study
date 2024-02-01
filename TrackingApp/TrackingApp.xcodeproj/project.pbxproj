@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E4BCF992B6B302800C10A00 /* ActivitieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4BCF982B6B302800C10A00 /* ActivitieView.swift */; };
 		0EA6D7FA2B6A13EB00FE091A /* TrackingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6D7F92B6A13EB00FE091A /* TrackingAppApp.swift */; };
 		0EA6D7FC2B6A13EB00FE091A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA6D7FB2B6A13EB00FE091A /* ContentView.swift */; };
 		0EA6D7FE2B6A13ED00FE091A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA6D7FD2B6A13ED00FE091A /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4BCF982B6B302800C10A00 /* ActivitieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitieView.swift; sourceTree = "<group>"; };
 		0EA6D7F62B6A13EB00FE091A /* TrackingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA6D7F92B6A13EB00FE091A /* TrackingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingAppApp.swift; sourceTree = "<group>"; };
 		0EA6D7FB2B6A13EB00FE091A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				0EA6D7F92B6A13EB00FE091A /* TrackingAppApp.swift */,
 				0EA6D7FB2B6A13EB00FE091A /* ContentView.swift */,
 				0EA6D8092B6A21AC00FE091A /* AddActivitieView.swift */,
+				0E4BCF982B6B302800C10A00 /* ActivitieView.swift */,
 				0EA6D8072B6A14D000FE091A /* Activitie.swift */,
 				0EA6D7FD2B6A13ED00FE091A /* Assets.xcassets */,
 				0EA6D7FF2B6A13ED00FE091A /* Preview Content */,
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4BCF992B6B302800C10A00 /* ActivitieView.swift in Sources */,
 				0EA6D7FC2B6A13EB00FE091A /* ContentView.swift in Sources */,
 				0EA6D7FA2B6A13EB00FE091A /* TrackingAppApp.swift in Sources */,
 				0EA6D8082B6A14D000FE091A /* Activitie.swift in Sources */,

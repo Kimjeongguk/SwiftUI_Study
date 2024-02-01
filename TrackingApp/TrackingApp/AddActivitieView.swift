@@ -11,33 +11,46 @@ struct AddActivitieView: View {
     @Environment(\.dismiss) var dismiss
     @State private var name = ""
     @State private var description = ""
+    @State private var isEmpty = false
+    @State private var message = ""
     
     var activitie: Activities
     var body: some View {
-        Form {
-            Section("제목") {
-                TextField("Name", text: $name)
+//        NavigationStack{
+            Form {
+                Section("제목") {
+                    TextField("Name", text: $name)
+                }
+                
+                Section("설명") {
+                    TextField("Description", text: $description)
+                }
             }
-            
-            Section("설명") {
-                TextField("Description", text: $description)
+            .toolbar {
+                Button("추가") {
+                    save()
+                }
             }
-        }
-        .toolbar {
-            Button("추가") {
-                save()
+            .alert("알림", isPresented: $isEmpty) {
+                Button("확인") {
+                    
+                }
+            } message: {
+                Text(message)
             }
-        }
+//        }
     }
     
     func save() {
-        let item = ActivitieItem(title: name, description: description, count: 0)
-        activitie.items.append(item)
         if name == "" {
-            
+            message = "이름을 입력해 주세요"
+            isEmpty = true
         }else if description == "" {
-            
+            message = "설명을 작성해 주세요"
+            isEmpty = true
         } else {
+            let item = ActivitieItem(title: name, description: description, count: 0)
+            activitie.items.append(item)
             dismiss()
         }
     }
