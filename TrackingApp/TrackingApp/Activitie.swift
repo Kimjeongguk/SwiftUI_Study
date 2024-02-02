@@ -42,6 +42,12 @@ class Activities: Hashable {
         items = items.filter { $0.id != item.id}
     }
     
+    func countUp(item: ActivitieItem) {
+        if let index = items.firstIndex(where: { $0.id == item.id }) {
+            items[index].count += 1
+        }
+    }
+    
     static func == (lhs: Activities, rhs: Activities) -> Bool {
         lhs.items == rhs.items
     }

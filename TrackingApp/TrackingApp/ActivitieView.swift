@@ -31,9 +31,8 @@ struct ActivitieView: View {
             Text("횟수 : \(activitie.count)")
                 .font(.title2)
             
-            
             Button(action: {
-                activities.items[0].count += 1
+                activities.countUp(item: activitie)
                 dismiss()
             }){
                 Text("완료")
@@ -44,7 +43,6 @@ struct ActivitieView: View {
                     .clipShape(.capsule)
             }
             .contentShape(Rectangle())
-            
             
             Spacer()
         }
